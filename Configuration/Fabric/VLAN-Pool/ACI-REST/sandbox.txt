@@ -1,44 +1,35 @@
-"""
-It logs in to the APIC and will create the physical domain.
-"""
-import acitoolkit.acitoolkit as aci
+Setup postman Code snippet:
+In order to execute the ACI-REST from postman the login needs to be performed first. The cookie would get generated
+and stored for subsequent execution.
 
-# Define static values to pass (edit these if you wish to set differently)
-DEFAULT_PHY_DOMAIN_NAME = 'test_phy_dmn'
+POST-URL : http://APIC-IP/api/aaaLogin.json
+Content-Type: application/json
+POST BODY :
+{
+	"aaaUser" : {
+		"attributes" : {
+			"name" : "APIC_USER",
+			"pwd" : "APIC_PASSWORD"
+		}
+	}
+}
 
+Executing ACI-REST using postman for first time:
 
-def main():
-    """
-    Main create tenant routine
-    :return: None
-    """
-    # Get all the arguments
-    description = 'It logs in to APIC and will create the physical domain.'
-    creds = aci.Credentials('apic', description)
-    creds.add_argument('-p', '--phy_domain', 
-                       help='The name of physical domain',
-                       default=DEFAULT_PHY_DOMAIN_NAME)
-    args = creds.get()
+1. Copy POST URL, mentioned in 'setup postman' section above, after replacing APIC-IP with IP address of APIC.
+2. Select method as POST
+3. Open raw JSON section.
+4. Copy POST-BODY JSON to raw JSON body section of postman.
+5. Replace APIC_USERNAME with apic user.
+6. Replace APIC_PASSWORD with apic password.
+7. Click send button
 
-    # Login to the APIC
-    session = aci.Session(args.url, args.login, args.password)
-    resp = session.login()
-    if not resp.ok:
-        print('%% Could not login to APIC')
+Note: If the cookie gets expired you might have to perform the above steps again.
 
-    # Create the physical Domain
-    phy_dmn = aci.PhysDomain(args.phy_domain)
+For subsequent REST call:
 
-    # Push the physical domain to the APIC
-    resp = session.push_to_apic(phy_dmn.get_url(),
-                                phy_dmn.get_json())
-    if not resp.ok:
-        print('%% Error: Could not push configuration to APIC')
-        print(resp.text)
-
-
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        pass
+1. Copy POST URL, after replacing APIC-IP with IP address of APIC.
+2. Select method as POST
+3. Open raw JSON section.
+4. Copy POST-BODY JSON to raw JSON body section of postman.
+5. Click send button
