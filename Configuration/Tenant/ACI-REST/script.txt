@@ -1,10 +1,27 @@
-#Show a specific Physical domain details
-
-GET URL: http://SWITCH_IP/api/node/mo/uni/phys-test_phy_dmn.json?rsp-subtree=full
+#Configure a tenant
+POST URL: http://SWITCH_IP/api/mo/uni.json
+Content-Type: application/json
 Cache-Control: no-cache
+POST BODY :
+{
+    "fvTenant": {
+        "attributes": {
+            "name": "test_tenant"
+        }
+    }
+}
 
 
-#Show all Physical domains
 
-GET URL: http://SWITCH_IP/api/mo/uni.json?query-target=subtree&target-subtree-class=physDomP
+#Configure a Bridge domain under specific tenant
+POST URL: http://SWITCH_IP/api/node/mo/uni/tn-test_tenant.json
+Content-Type: application/json
 Cache-Control: no-cache
+POST BODY :
+{
+    "fvBD": {
+        "attributes": {
+            "name": "test_bd"
+        }
+    }
+}
