@@ -5,4 +5,4 @@ ACI Fabric is configured using an abstract policy model on the Cisco Application
 In addition to standard REST interface, Cisco provides several open source tools/frameworks to automate and program the APIC – ACItoolkit, Cobra (Python), ACIrb (Ruby), Puppet, Ansible etc.
 <br/><br/>
 This section introduces the user to some basic APIC configuration use cases such as Physical domain config, VLAN pool creation and Tenant config.
-<br/><br/>
+
