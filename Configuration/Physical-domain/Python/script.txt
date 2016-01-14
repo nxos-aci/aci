@@ -1,10 +1,10 @@
 """
-It logs in to the APIC and will create the tenant.
+It logs in to the APIC and will create the physical domain.
 """
 import acitoolkit.acitoolkit as aci
 
 # Define static values to pass (edit these if you wish to set differently)
-DEFAULT_TENANT_NAME = 'test_tenant'
+DEFAULT_PHY_DOMAIN_NAME = 'test_phy_dmn'
 
 
 def main():
@@ -13,11 +13,11 @@ def main():
     :return: None
     """
     # Get all the arguments
-    description = 'It logs in to the APIC and will create the tenant.'
+    description = 'It logs in to APIC and will create the physical domain.'
     creds = aci.Credentials('apic', description)
-    creds.add_argument('-t', '--tenant', help='The name of tenant',
-                       default=DEFAULT_TENANT_NAME)
-    
+    creds.add_argument('-p', '--phy_domain', 
+                       help='The name of physical domain',
+                       default=DEFAULT_PHY_DOMAIN_NAME)
     args = creds.get()
 
     # Login to the APIC
@@ -26,12 +26,12 @@ def main():
     if not resp.ok:
         print('%% Could not login to APIC')
 
-    # Create the Tenant
-    tenant = aci.Tenant(args.tenant)
+    # Create the physical Domain
+    phy_dmn = aci.PhysDomain(args.phy_domain)
 
-    # Push the tenant to the APIC
-    resp = session.push_to_apic(tenant.get_url(),
-                                tenant.get_json())
+    # Push the physical domain to the APIC
+    resp = session.push_to_apic(phy_dmn.get_url(),
+                                phy_dmn.get_json())
     if not resp.ok:
         print('%% Error: Could not push configuration to APIC')
         print(resp.text)

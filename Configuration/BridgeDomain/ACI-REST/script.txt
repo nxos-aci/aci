@@ -1,0 +1,14 @@
+#Configure a Bridge Domain under specific tenant
+
+#Note: Replace "<tenant-name>" with the tenant name in the POST URL
+
+POST URL: http://SWITCH_IP/api/mo/uni/tn-<tenant-name>.json
+Content-Type: application/json
+Cache-Control: no-cache
+POST BODY :
+{
+    "fvBD": {
+        "attributes": {
+            "name": "test_bd"
+        }
+}

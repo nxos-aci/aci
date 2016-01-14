@@ -1,0 +1,24 @@
+#Configure a End Point Group in an application profile under specific tenant
+
+#Note : Replace "<tenant-name>" with the tenant name in the POST URL
+
+POST URL: http://SWITCH_IP/api/mo/uni/tn-<tenant-name>.json
+Content-Type: application/json
+Cache-Control: no-cache
+POST BODY :
+{
+    "fvAp": {
+		"attributes": {
+			"name": "3Tier_App"
+		},
+		"children": [
+            		{
+				"fvAEPg": {
+			    	"attributes": {
+						"name": "app_epg"
+					}
+				}
+			}
+		]
+	}
+}
