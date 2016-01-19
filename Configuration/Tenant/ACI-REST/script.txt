@@ -1,6 +1,6 @@
 #Configure a tenant
 
-POST URL: http://SWITCH_IP/api/mo/uni.json
+POST URL: http://APIC-IP/api/mo/uni.json
 Content-Type: application/json
 Cache-Control: no-cache
 POST BODY :

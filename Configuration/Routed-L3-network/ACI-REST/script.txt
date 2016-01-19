@@ -1,8 +1,8 @@
 #Configure a Routed L3-network under specific tenant
 
-#Note: Replace "<tenant-name>" with the tenant name in the POST URL
+#Note: Replace "TENANT_NAME" with the tenant name in the POST URL
 
-POST URL: http://SWITCH_IP/api/mo/uni/tn-<tenant-name>.json
+POST URL: http://APIC-IP/api/mo/uni/tn-TENANT_NAME.json
 Content-Type: application/json
 Cache-Control: no-cache
 POST BODY :

@@ -1,6 +1,6 @@
 #Configure VLAN Pool with vlan range
 
-POST URL: http://SWITCH_IP/api/node/mo/uni/infra/vlanns-[test_vlan]-dynamic.json
+POST URL: http://APIC-IP/api/node/mo/uni/infra/vlanns-[test_vlan]-dynamic.json
 Content-Type: application/json
 Cache-Control: no-cache
 POST BODY :

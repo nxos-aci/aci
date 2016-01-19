@@ -1,6 +1,6 @@
 #Configure Physical domain and Attach VLAN pool to it
 
-POST URL: http://SWITCH_IP/api/node/mo/uni.json
+POST URL: http://APIC-IP/api/node/mo/uni.json
 Content-Type: application/json
 Cache-Control: no-cache
 POST BODY :
